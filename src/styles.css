@@ -1,0 +1,108 @@
+:root{
+  --cyan:#00bcd4;
+  --deep-cyan:#0097a7;
+  --blue:#1565c0;
+  --bg:#f7fbff;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --glass: rgba(255,255,255,0.7);
+  --shadow: 0 6px 18px rgba(16,24,40,0.08);
+  --radius:14px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#eaf6ff 60%)}
+a{color:inherit}
+
+.app {
+  max-width:1100px;margin:28px auto;padding:22px;
+  display:flex;flex-direction:column;gap:18px;
+}
+
+/* Header */
+.header {
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(90deg,var(--cyan),var(--blue));
+  color:white;padding:14px;border-radius:16px;box-shadow:var(--shadow);
+}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{
+  width:48px;height:48px;border-radius:10px;background:linear-gradient(45deg,#fff4,#fff8);
+  display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--blue)
+  }
+.header-actions{display:flex;gap:10px;align-items:center}
+.btn{
+  background:transparent;border:2px solid rgba(255,255,255,0.18);padding:8px 12px;border-radius:10px;color:white;font-weight:600;cursor:pointer;
+}
+.btn.ghost{background:transparent}
+.btn.primary{background:white;color:var(--blue);border:none}
+.small{padding:6px 10px;border-radius:8px;font-size:14px}
+
+/* Layout */
+.grid{
+  display:grid;grid-template-columns: 1fr 360px;gap:18px;
+}
+@media (max-width:900px){ .grid{grid-template-columns:1fr} }
+
+/* Main card */
+.card{
+  background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:var(--shadow)
+}
+.h2{font-size:18px;margin:0 0 12px 0;color:#0b253b}
+
+/* Task Input */
+.task-input {display:flex;gap:8px}
+.input{
+  flex:1;padding:12px;border-radius:10px;border:1px solid #e6eef6;background:transparent;font-size:15px;
+  transition:box-shadow .18s, transform .05s;
+}
+.input:focus{outline:none;box-shadow:0 6px 20px rgba(0,188,212,0.12);transform:translateY(-1px)}
+.add-btn{padding:12px 14px;border-radius:10px;background:linear-gradient(90deg,var(--cyan),var(--deep-cyan));color:white;border:none;font-weight:600;cursor:pointer}
+
+/* Task list */
+.tasks{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.task{
+  display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;border:1px solid #e6eef6;background:linear-gradient(180deg,#fff,#fcfeff);
+  transition:transform .12s, box-shadow .12s;cursor:pointer;
+}
+.task:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(6,95,128,0.06)}
+.task.completed{opacity:0.8;border-style:dashed;background:linear-gradient(90deg,#e8ffff,#f1fbff)}
+.task .title{font-weight:600}
+.task .meta{color:var(--muted);font-size:13px}
+
+/* Completed horizontal rows */
+.completed-row{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.row-scroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;scroll-behavior:smooth}
+.poster{
+  min-width:160px;border-radius:10px;overflow:hidden;padding:8px;background:linear-gradient(180deg,#f6fdff,#ffffff);
+  border:1px solid #e6f3fb;box-shadow:0 8px 20px rgba(5,60,80,0.03)
+}
+.poster img{width:100%;height:100px;object-fit:cover;border-radius:8px}
+.poster .pt{font-weight:700;margin-top:8px}
+.poster .pmeta{font-size:13px;color:var(--muted)}
+
+/* Options section */
+.options-list{display:flex;flex-direction:column;gap:8px}
+.option{
+  display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:10px;border:1px solid #e6eef6;
+}
+
+/* Modals */
+.modal-backdrop{
+  position:fixed;inset:0;background:rgba(3,7,18,0.45);display:flex;align-items:center;justify-content:center;padding:18px;z-index:60
+}
+.modal{width:420px;max-width:95%;background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow)}
+.form-row{display:flex;flex-direction:column;gap:8px;margin:8px 0}
+.input-plain{padding:10px;border-radius:8px;border:1px solid #e6eef6}
+
+/* Footer */
+.footer{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,#ffffff, #f3fbff);color:var(--muted)}
+
+/* small screens tweaks */
+@media (max-width:480px){
+  .header{padding:10px}
+  .brand .title{display:none}
+  .grid{gap:12px}
+  .poster{min-width:140px}
+}
